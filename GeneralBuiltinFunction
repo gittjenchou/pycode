@@ -1,0 +1,21 @@
+
+
+#function
+#measuring length of string                 : len()
+len('Gita')
+len('')
+len(' ')
+
+#converting to string                       : str()
+str(25)
+
+#converting to integer                      : int()
+int('25')
+int('25 ')
+
+#converting to float                        : float()
+float('25 ')
+float('3.14')
+
+#listing all characters
+list('Gita')
