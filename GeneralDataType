@@ -1,0 +1,62 @@
+
+
+#Python has five standard data types:
+#    Numbers
+#    String
+#    List
+#    Tuple
+#    Dictionary
+
+#Python supports four different numerical types:
+#    int (signed integers)
+#    long (long integers [can also be represented in octal and hexadecimal])
+#    float (floating point real values)
+#    complex (complex numbers)
+
+#Here are some examples of numbers:
+#   int         long                        float           complex
+#   10          51924361L                   0.0             3.14j
+#   100         -0x19323L                   15.20           45.j
+#   -786        0122L                       -21.9           9.322e-36j
+#   080         0xDEFABCECBDAECBFBAEL       32.3+e18        .876j
+#   -0490       535633629843L               -90.            -.6545+0J
+#   -0x260      -052318172735L              -32.54e100      3e+26J
+#   0x69        -4721885298529L             70.2-E12        4.53e-7j
+
+#Lists are the most versatile of Python's compound data types. A list contains items separated by commas and enclosed within square brackets ([]).
+#!/usr/bin/python
+
+list = [ 'abcd', 786 , 2.23, 'john', 70.2 ]
+tinylist = [123, 'john']
+
+print list          # Prints complete list
+print list[0]       # Prints first element of the list
+print list[1:3]     # Prints elements starting from 2nd to 4th
+print list[2:]      # Prints elements starting from 3rd element
+print tinylist * 2  # Prints list two times
+print list + tinylist # Prints concatenated lists
+
+
+#A tuple is another sequence data type that is similar to the list. A tuple consists of a number of values separated by commas. Unlike lists, however, tuples are enclosed within parentheses.
+#Tuples can be thought of as read-only lists.
+
+tuple = ( 'abcd', 786 , 2.23, 'john', 70.2  )
+tinytuple = (123, 'john')
+
+print tuple           # Prints complete list
+print tuple[0]        # Prints first element of the list
+print tuple[1:3]      # Prints elements starting from 2nd to 4th
+print tuple[2:]       # Prints elements starting from 3rd element
+print tinytuple * 2   # Prints list two times
+print tuple + tinytuple # Prints concatenated lists
+
+#Python 's dictionaries are hash table type. They work like associative arrays or hashes found in Perl and consist of key-value pairs.
+
+tinydict = {'name': 'john','code':6734, 'dept': 'sales'}
+print dict['one']       # Prints value for 'one' key
+print dict[2]           # Prints value for 2 key
+print tinydict          # Prints complete dictionary
+print tinydict.keys()   # Prints all the keys
+print tinydict.values() # Prints all the values
+
+
