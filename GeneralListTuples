@@ -1,0 +1,139 @@
+
+
+#list
+s = ['dog','wolf','panda']
+print(s)
+print(s[0])
+print(s[1])
+print(s[2])
+print(s[-1])
+print(s[-3])
+print(s[0:1]) #notice that include index#0 up to index#01 but not include index#01 in
+#notice again that python starts from zero
+print(s[:2]) #show from beginning up to but not inclusion
+print(s[1:]) #show from certain index to the last
+del s[2] #deleting certain index
+print(s)
+print(len(s))
+print(s+[10,20,30,40,50])
+print(s*3)
+print(s.index('dog'))
+s.append('cat')
+print(s)
+s.insert(0,'mouse') #inserting to index#0
+print(s)
+s.remove('mouse')
+print(s)
+s.insert(1,'mouse') #inserting to index#0
+s.insert(0,'mouse') #inserting to index#0
+s.remove('mouse') #removing earlier index, not all of the list if duplicate list exists
+print(s)
+#remove is removing certain value while del is deleting certain index
+s.sort()
+print(s)
+s.sort(reverse=True) #remember True not true
+print(s)
+s = ['Alice','Bob','andy','bryan']
+s.sort() #notice that sort is sorting upper case in first priority then lowercase later
+print(s)
+s.sort(key=str.lower)
+print(s)
+
+s = [['dog','wolf','panda'],[10,20,30,40,50]]
+print(s)
+print(s[0])
+print(s[1])
+print(s[0][1])
+print(s[1][3])
+print(s[1][-2])
+print(s[-2][-2])
+
+#overriding list
+s = [10,20,30,40,50]
+print(s)
+s[1:3]=['dog','wolf','panda']
+print(s)
+
+#creating a list
+list('Gita')
+list(range(0,10,2))
+
+#checking in and not in
+10 in [10,20,30,40,50]
+10 not in [10,20,30,40,50]
+
+#use list in for loop
+for cntday in [10,20,30,40,50]:
+    print(cntday)
+
+for cntday in range(len([10,20,30,40,50])):
+    print(cntday)
+#you will notice that operation in string is pretty much the same with list
+#however string is immutable while list is mutable (can be changed),e.g this will bring error message
+lcv_var1 = 'Alice'
+lcv_var1[-1] = 'o'
+
+#the same concept with list but immutable like string is tuple
+#tuple is just like list but created using parentheses, unlike list with square bracket
+x = (1,2,3,4,5)
+#   any operation with list works with tuple, only cannot be changed
+#   the only way is to create new tuple from other tuple or delete tuple
+#   you can't sort tuple
+del x
+
+tup1 = (1,2,3,4,5)
+tup2 = (2,3,4,5,6)
+print(len(tup1))
+print(max(tup1))
+print(min(tup1))
+
+list1 = [1,2,3,4,5]
+tup3 = tuple(list1)
+print(tup1)
+
+#compare this : changing string and changing list
+spam = 10
+real = spam
+spam = 30
+print(spam)
+print(real)
+
+xlist1 = [1,2,3,4,5]
+xlist2 = xlist1
+xlist1[1] = 'hello'
+print(xlist1)
+print(xlist2)
+#this is because python store list in memory and when you create new list from other list, it creates reference to this, 
+#which makes changing the reference also changing the value of 2nd list
+
+xlist1 = [1,2,3,4,5]
+xlist2 = xlist1
+xlist2[1] = 'hello'
+print(xlist1)
+print(xlist2)
+#it's the same when changing the other list
+
+#to avoid this, there is a function called deepcopy in copy module
+import copy
+xlist1 = [1,2,3,4,5]
+xlist2 = copy.deepcopy(xlist1)
+xlist2[1] = 'hello'
+print(xlist1)
+print(xlist2)
+
+#   create blank list
+llv_tmp1 = list()
+
+#   tuples are comparable
+(0,1,2) < (2,3,4)
+#   will return True
+
+
+#   What does result = sentence[:] do?
+#   That's a Python way of copying a list. You're using the list slice syntax [:] to effectively make a slice from the very first element to the very last one.
+ListSong = ["Happy birthday to you","I don't want to get sued","So I'll stop right there"]
+CopySong = ListSong[:]
+print ListSong
+print CopySong
+
+
