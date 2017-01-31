@@ -1,0 +1,41 @@
+
+
+import time
+import pywinauto
+import ctypes
+import win32clipboard
+
+#formats = {}
+#for define_name in win32defines.__dict__.keys():
+#    if define_name.startswith("CF_"):
+#        formats[getattr(win32defines, define_name)] = define_name
+#print(formats)
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+sublime_win1.TypeKeys("test{SPACE}from{SPACE}pywinauto")
+sublime_win1.TypeKeys("{ENTER}")
+sublime_win1.TypeKeys("test{SPACE}from{SPACE}pywinauto{#} 2")
+sublime_win1.TypeKeys("{ENTER}")
+sublime_win1.TypeKeys("test{SPACE}from{SPACE}pywinauto{#} 3")
+sublime_win1.TypeKeys("{ENTER}")
+sublime_win1.TypeKeys("{UP 2}")
+sublime_win1.TypeKeys("+{RIGHT 4}")
+sublime_win1.TypeKeys("^C")
+# get clipboard data
+win32clipboard.OpenClipboard()
+clip1 = win32clipboard.GetClipboardData()
+win32clipboard.CloseClipboard()
+if clip1 == "test":
+    print("Yeeeha")
+else:
+    print("Hahhaa")
