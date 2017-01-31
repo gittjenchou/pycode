@@ -1,0 +1,5 @@
+
+
+#! python
+#   to help OS identify our program, we use #! in windows. 
+#   The implication is that we can run python from CMD
