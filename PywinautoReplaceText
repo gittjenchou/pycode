@@ -1,0 +1,400 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#doing text replacement
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+#--------------------------------------------
+# \n"
+sublime_win1.TypeKeys("^H")
+#multiple keys combined with alt-key
+#sublime_win1.TypeKeys("^{HO}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\n"')
+sublime_win1.TypeKeys("{TAB}")
+
+#hit it twice
+#sublime_win1.TypeKeys("{TAB 2}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('"')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# [^\x00-\x7F]+
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('[{^}\\x00-\\x7F]{+}')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('{ }')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \n\x28
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\n\\x28')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\x28')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nA
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nA')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('A')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nB
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nB')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('B')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nC
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nC')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('C')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nD
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nD')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('D')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nE
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nE')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('E')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nF
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nF')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('F')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nG
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nG')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('G')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nH
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nH')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('H')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nI
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nI')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('I')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nJ
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nJ')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('J')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nK
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nK')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('K')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nL
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nL')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('L')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nM
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nM')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('M')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nN
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nN')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('N')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nO
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nO')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('O')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nP
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nP')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('P')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nQ
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nQ')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('Q')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nR
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nR')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('R')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \S
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nS')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('S')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nT
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nT')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('T')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nU
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nU')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('U')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nV
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nV')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('V')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nW
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nW')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('W')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nX
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nX')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('X')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nY
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nY')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('Y')
+sublime_win1.TypeKeys("^%+{ENTER}")
+#--------------------------------------------
+# \nZ
+sublime_win1.TypeKeys("{ESC}")
+sublime_win1.TypeKeys("^H")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('\\nZ')
+
+sublime_win1.TypeKeys("{TAB}")
+sublime_win1.TypeKeys("^A")
+sublime_win1.TypeKeys("{BACKSPACE}")
+sublime_win1.TypeKeys('Z')
+sublime_win1.TypeKeys("^%+{ENTER}")
