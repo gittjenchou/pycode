@@ -1,0 +1,40 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#catch dialog (1)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+#imagine dialog is active window, one application can have multiple windows
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#catch dialog (2)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+print("==" * 20)
+print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
