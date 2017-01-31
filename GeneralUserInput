@@ -1,0 +1,7 @@
+
+
+#asking for user input (response)
+print('Hello user')
+print('Please introduce yourself by type in your name')
+lcv_usrnm = input()
+print('Thanks, '+lcv_usrnm+'!')
