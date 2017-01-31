@@ -1,0 +1,27 @@
+
+
+#variable
+lcv_var1 = 'Alice'
+lcv_var1+ ' is here'
+lcv_var1+ ' is here'*2
+lcv_var1 = ' is here'
+lcv_var1
+lnv_var1 = 2+2
+lcv_var1 = 'Alice'
+print(lcv_var1[1:3])
+print(lcv_var1[:3] )
+print(lcv_var1[1:] )
+print(lcv_var1[-2] )
+
+lnv_var1 = 99
+lnv_var1 = lnv_var1+1
+lnv_var1 += 1
+print(lnv_var1)
+#do the same for -=,*=,/=,%=
+
+#swapping variable
+lcv_var1 = 'Alice'
+lcv_var2 = 'Bob'
+lcv_var1,lcv_var2 = lcv_var2,lcv_var1
+print(lcv_var1)
+print(lcv_var2)
