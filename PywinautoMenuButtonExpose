@@ -1,0 +1,75 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#this will print all button in a menu (1)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+#sublime_win1.MenuSelect('File->Open File')
+sublime_win1.MenuSelect(u'&File->&Open File\u2026\tCtrl+O')
+sublime.Open.print_control_identifiers()
+#Open is taken from title when OpenFile menu is opened (top left)
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#this will print all button in a menu (2)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+#print("==" * 20)
+#print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+#sublime_win1.MenuSelect('File->Open File')
+sublime_win1.MenuSelect(u'&File->&Open File\u2026\tCtrl+O')
+sublime.Open.print_control_identifiers()
+#Open is taken from title when OpenFile menu is opened (top left)
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#open file exposed
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+#print("==" * 20)
+#print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+#sublime_win1.MenuSelect('File->Open File')
+sublime_win1.MenuSelect(u'&File->&Open File\u2026\tCtrl+O')
+#sublime_win1.MenuSelect(u'F&ind->Replace\u2026\tCtrl+H') # this is unicode text
+sublime.Open.print_control_identifiers()
+
