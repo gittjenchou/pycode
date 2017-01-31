@@ -1,0 +1,62 @@
+#--- regular create table
+import time
+import cx_Oracle
+
+print "Current date & time " + time.strftime("%c")
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = db.cursor()
+cursor.arraysize = 1000000
+cursor.execute("\
+create table gt_msd_tdata_201606 nologging compress for query high as                       \
+select /*+parallel(4) no_statement_queuing*/                                                \
+       daydate                                                                              \
+      ,msisdn                                                                               \
+      ,lac                                                                                  \
+      ,ci                                                                                   \
+      ,rattype                                                                              \
+      ,sum(datavol) datavol                                                                 \
+from (                                                                                      \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160630 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160629 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160628 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160627 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160626 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160625 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160624 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160623 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160622 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160621 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160620 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160619 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160618 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160617 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160616 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160615 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160614 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160613 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160612 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160611 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160610 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160609 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160608 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160607 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160606 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160605 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160604 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160603 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160602 union all \
+        select /*+parallel(4) no_statement_queuing*/ * from gt_msd_tdata_20160601           \
+      )                                                                                     \
+group by daydate                                                                            \
+        ,msisdn                                                                             \
+        ,lac                                                                                \
+        ,ci                                                                                 \
+        ,rattype                                                                            \
+               ")
+cursor.close()
+
+print "Current date & time " + time.strftime("%c")
