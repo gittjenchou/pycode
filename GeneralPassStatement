@@ -1,0 +1,10 @@
+
+
+# will be useful when having a block but not ready with action needed.
+# put the pass statement in order to have the block as placeholder
+for letter in 'Python': 
+    if letter == 'h':
+        pass
+        print 'This is pass block'
+    print 'Current Letter :', letter
+print "Good bye!"
