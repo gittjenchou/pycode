@@ -1,0 +1,25 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#open an application (1)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#open an application (2)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+print("==" * 20)
+print(sublime.windows_())
