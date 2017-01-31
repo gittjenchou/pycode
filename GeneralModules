@@ -1,0 +1,92 @@
+
+
+#other libraries must be installed first and called in
+
+#importing modules
+import random,sys,os,math
+#or
+from random import *
+#using function inside module
+import random.randinit(1,10)
+#exiting module
+random.exit()
+
+if modules does not come 
+#   C:\path\to\protobuf-2.5.0> cd python
+#   C:\path\to\protobuf-2.5.0\python> python setup.py build
+#   C:\path\to\protobuf-2.5.0\python> python setup.py test
+#   C:\path\to\protobuf-2.5.0\python> python setup.py install
+
+
+#   installing third party modules
+#   go to command prompt
+#   locate where the python 3.x is installed
+#   cd C:\Users\USER\AppData\Local\Programs\Python\Python35-32\Scripts
+#   cd C:\Python27\Scripts
+#   python -m pip install --upgrade pip
+#   pip install --upgrade pip
+#   pip install pyperclip
+#   pip install jupyter
+#   pip install ipython
+#   pip install cython
+#   pip install lxml
+#   pip install scrapy
+#   pip install requests
+#   pip install -U scikit-learn
+#   pip install pylibrary
+#   pip install SQLAlchemy
+#   pip install wget
+#   pip install pywinauto
+#   pip install xlrd
+#   pip install xlwt
+#   pip install unidecode
+#   pip install openpyxl
+#   pip install xlsxwriter
+#   pip install pydocs
+#   install microsoft c++ 9.0 (VCForPython27.msi)
+#   pip.exe install pandas-0.17.1-cp27-none-win32.whl
+#   pip install numpy
+#   pip install pandas
+#   pip install pillow
+#   pip.exe install scipy-0.17.0rc2-cp27-none-win32.whl
+#   pip.exe install pyOpenSSL-0.15.1-py2.py3-none-any.whl
+#   pip install matplotlib
+#   pip install plotly
+#   pip install pypiwin32
+#   pip install xlwings
+#   pip install jinja2
+#   pip install six
+#   pip install requests
+#   pip install tornado
+#   pip install pyyaml
+#   pip install dateutil
+#   pip install bokeh
+#   pip install cx_oracle
+#   pip install rdpy
+#   pip install sas7bdat
+#   pip install theano
+#   pip install sendkeys
+#   pip install odbchelper
+#   pip install wmi
+#   pip install arcpy
+#   pip install beautifulsoup4
+
+
+#   libxsl
+#   python setup.py install
+
+
+#   list down installed modules
+import pip
+installed_packages = pip.get_installed_distributions()
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+for i in installed_packages]):
+    print(installed_packages_list)
+
+help('pywinauto')
+dir('pywinauto')
+for i in dir('pywinauto'): print i
+
+pydoc.help('pywinauto')
+pydoc.help('pywinauto.application')
+
