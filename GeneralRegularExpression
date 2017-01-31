@@ -1,0 +1,183 @@
+import os
+import re
+import glob
+import win32com.client as win32
+import pywinauto
+import time
+
+string1 = '510-11015-15151-29151'
+string2 = '510-11015-15151-29151   '
+lookup1 = '-'
+b = re.finditer(re.compile(lookup1),string1)
+count = 0
+patt = ''
+for match in b:
+    count +=1
+    patt = patt+'[0-9]{1,}-'
+print(count)
+print(patt)
+c = re.sub(patt,' ',string1).strip()
+print(re.compile(patt))
+print(c)
+print(re.sub(' ','X',string2))
+
+
+import re
+message = 'Call me on 555-444-9999 or 555-444-1111'
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search(message)
+print mo
+#   the result is an object, we need other method to capture the value
+
+import re
+message = 'Call me on 555-444-9999 or 555-444-1111'
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search(message)
+print mo.group()
+#   we can capture the first telephone number, this is the functionality of search method
+
+import re
+message = 'Call me on 555-444-9999 or 555-444-1111'
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.findall(message)
+print mo
+#   now we can capture all of telephone numbers
+
+import re
+message = 'Call me on 555-444-9999 or 555-444-1111'
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+mo = phoneNumRegex.findall(message)
+print mo
+#   now using () to group the pattern
+#   you can always group the existing group ((...)) which will combine all within-group as one
+
+import re
+message = 'Call me on (555)-444-9999 or (555)-444-1111'
+phoneNumRegex = re.compile(r'\(\d\d\d\)-(\d\d\d-\d\d\d\d)')
+mo = phoneNumRegex.findall(message)
+print mo
+#   this return pattern in group, not all string that match that pattern
+
+#   import re
+#   message = 'Call me on (555)-444-9999 or (555)-444-1111'
+#   phoneNumRegex = re.compile(r'\(\d\d\d)-(\d\d\d-\d\d\d\d)')
+#   mo = phoneNumRegex.findall(message)
+#   print mo
+#   print mo(1)
+#   print mo(2)
+
+#   #   now using group in regex using ()
+#   import re
+#   message = 'Call me on 555-444-9999 or 555-444-1111'
+#   phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+#   mo = phoneNumRegex.search(message)
+#   print mo.group()
+#   print mo.group(1)
+#   print mo.group(2)
+
+#   now using |
+import re
+message = 'Batmobile lost a wheel'
+phoneNumRegex = re.compile(r'Bat(man|mobile|copter)')
+mo = phoneNumRegex.search(message)
+print mo.group()
+message = 'Batman has just realized that Batmobile lost a wheel'
+phoneNumRegex = re.compile(r'Bat(man|mobile|copter)')
+mo = phoneNumRegex.findall(message)
+print mo
+
+import re
+message = 'Batmotorcycle lost a wheel'
+phoneNumRegex = re.compile(r'Bat(man|mobile|copter)')
+mo = phoneNumRegex.search(message)
+print mo == None
+print mo.group()
+#   !!! Remember that None does not have attribute group, as expressed in the error message
+
+#   in regex \d is called shorthand classes
+#   to make your own shorthand classes, you can list them in []
+
+import re
+message = "Hello dear, what's happening right now?"
+phoneNumRegex = re.compile(r'^Hello')
+mo = phoneNumRegex.search(message)
+print mo.group()
+#   using ^ (caret) to capture pattern in the beginning of the word
+
+import re
+message = "Hello dear, what's happening right now?"
+phoneNumRegex = re.compile(r'^Hello(.*)')
+mo = phoneNumRegex.search(message)
+print mo.group()
+#   problem above, it does not capture the whole content
+
+import re
+message = "Hello dear, what's happening right now?"
+phoneNumRegex = re.compile(r'^Hello(.*)')
+mo = phoneNumRegex.findall(message)
+print mo
+#   problem above, it does not capture the content that needs to be extracted in () sign
+#   it is because the method is search, not findall which extracting the pattern requested
+#   the same concept for $ to capture pattern ended in certain way
+#   . only mean to find any character but the new line
+#   to make . mean finding any character including the new line, then we use [phoneNumRegex = re.compile(r'^Hello(.*)',re.DOTALL)]
+
+import re
+message = "Hello dear, what's happening right now?\nEverything is OK?"
+phoneNumRegex = re.compile(r'^Hello(.*)',re.DOTALL)
+mo = phoneNumRegex.findall(message)
+print mo
+
+import re
+message = "Hello dear, what's happening right now?\nEverything is OK?"
+phoneNumRegex = re.compile(r'^Hello(.*)',re.DOTALL)
+mo = phoneNumRegex.search(message)
+print mo.group()
+#   other than that re.DOTALL, there are others which can be researched later, e.g.: re.IGNORECASE, re.VERBOSE
+#   and those arguments can be combined re.DOTALL | re.IGNORECASE | re.VERBOSE
+
+
+message1 = [
+            '6285771745135,GoogleServices,1484288'
+            ,'GoogleServices,1484288'
+            ,'6285771745135,GoogleServices'
+            ,'6285771745135,"GoogleServices'
+            ]
+import re
+phoneNumRegex = re.compile(r'([0-9]*),{1}("*\'*[a-zA-Z]*"*\'*),{1}([0-9]*)')
+for cnt in message1:
+    print 'message is :' + cnt
+    try:
+        mo1 = phoneNumRegex.search(cnt)
+        a = mo1.group()
+        #print 'Catched pattern is :' + a
+        mo2 = phoneNumRegex.findall(cnt)
+        print mo2
+        print mo2[0][0]
+        print mo2[0][1]
+        print mo2[0][2]
+    except AttributeError:
+        print 'Erroneous pattern is :' + cnt
+
+
+message1 = [
+            '6285771745135,GoogleServices,1484288'
+            ,'GoogleServices,1484288'
+            ,'6285771745135,GoogleServices'
+            ,'6285771745135,"GoogleServices'
+            ]
+import re
+phoneNumRegex = re.compile(r'([0-9]*),{1}("*\'*[a-zA-Z]*"*\'*),{1}([0-9]*)')
+for cnt in message1:
+    print 'message is :' + cnt
+    try:
+        mo1 = phoneNumRegex.search(cnt)
+        a = mo1.group()
+        #print 'Catched pattern is :' + a
+        mo2 = phoneNumRegex.findall(cnt)
+        print mo2
+        print mo2[0][0]
+        print mo2[0][1]
+        print mo2[0][2]
+    except AttributeError:
+        print 'Erroneous pattern is :' + cnt
