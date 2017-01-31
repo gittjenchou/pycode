@@ -1,0 +1,68 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#this will trigger open file (1) via send keys
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+print("==" * 20)
+print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+sublime_win1.TypeKeys("^O")
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#this will trigger open file (2) via menu file
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+#print("==" * 20)
+#print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+#sublime_win1.MenuSelect('File->Open File')
+sublime_win1.MenuSelect(u'&File->&Open File\u2026\tCtrl+O')
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#open file
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+sublime_win1.MenuSelect(u'&File->&Open File\u2026\tCtrl+O')
+sublime.Open.Edit.SetEditText(r'C:\Users\USER\Documents\lynx\recurring\ndb database\NDB most recent\CJRO\ND16_01_CJRO_HW_2G_SiteData_Ed1_140116.csv')
+sublime.Open.Open.Click()
+#sublime_win1.TypeKeys("%O")
