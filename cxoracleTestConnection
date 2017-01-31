@@ -1,0 +1,113 @@
+
+
+#--- simple select 
+import cx_Oracle
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = db.cursor()
+cursor.execute("select * from put_tmp_sarea_4g_new33")
+rows = cursor.fetchall()
+print "#-records:", cursor.rowcount
+for i in range(0, cursor.rowcount):
+  print rows[i][0], rows[i][1]
+cursor.close()
+
+
+#--- simple count
+import time
+import cx_Oracle
+
+print "Current date & time " + time.strftime("%c")
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = db.cursor()
+cursor.execute("select /*+parallel(4) no_statement_queuing*/ count(distinct msisdn) from tdw_summary.ar_cst_dly_smy partition (p_20160131)")
+rows = cursor.fetchall()
+print "#-records:", cursor.rowcount
+for i in range(0, cursor.rowcount):
+  print rows[i][0]
+cursor.close()
+
+print "Current date & time " + time.strftime("%c")
+
+
+#--- simple count with setting of array fetch = 1000
+import time
+import cx_Oracle
+
+print "Current date & time " + time.strftime("%c")
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = db.cursor()
+cursor.arraysize = 1000
+cursor.execute("select /*+parallel(4) no_statement_queuing*/ count(distinct msisdn) from tdw_summary.ar_cst_dly_smy partition (p_20160131)")
+rows = cursor.fetchall()
+print "#-records:", cursor.rowcount
+for i in range(0, cursor.rowcount):
+  print rows[i][0]
+cursor.close()
+
+print "Current date & time " + time.strftime("%c")
+
+
+
+#--- regular create table
+import time
+import cx_Oracle
+
+print "Current date & time " + time.strftime("%c")
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = db.cursor()
+cursor.arraysize = 1000
+cursor.execute("\
+create table biadm.gt_usimsubs_cnn_20151004 nologging compress for query high as                                                                                                                    \
+select /*+parallel(4) no_statement_queuing*/                                                                                                                                                        \
+       x1.msisdn                                                                                                                                                                                    \
+      ,to_date(x1.dt_id,'yyyymmdd') as daydate                                                                                                                                                      \
+      ,x1.ar_prim_pymt_tp_id                                                                                                                                                                        \
+      ,x1.svc_usg_lac lac                                                                                                                                                                           \
+      ,x1.svc_usg_cell_id ci                                                                                                                                                                        \
+      ,case                                                                                                                                                                                         \
+       when x1.rat_tp = 6 then 2                                                                                                                                                                    \
+       when x1.rat_tp = 1 then 1                                                                                                                                                                    \
+       else 0 end rat_tp                                                                                                                                                                            \
+      ,x1.svc_clss_id                                                                                                                                                                               \
+      ,nvl(x1.da1_rev_code,x1.ma_rev_code) rev_code                                                                                                                                                 \
+      ,case                                                                                                                                                                                         \
+       when (((case when x1.da1_rev_code is null then 'REGULER' else x1.ma_da_ac_1 end) = 'REGULER') and (x1.data_rev > 0))                                                                         \
+             or                                                                                                                                                                                     \
+            (((case when x1.da1_rev_code is null then 'REGULER' else x1.ma_da_ac_1 end) = 'REGULER') and (x1.data_rev = 0) and (x1.acm_id is null) and (x1.acm_id_2 is null)) then 'REGULER'        \
+       when ((case when x1.da1_rev_code is null then 'REGULER' else x1.ma_da_ac_1 end) = 'REGULER') and (x1.data_rev = 0) and (x1.acm_id is not null) then x1.acm_id                                \
+       when ((case when x1.da1_rev_code is null then 'REGULER' else x1.ma_da_ac_1 end) = 'REGULER') and (x1.data_rev = 0) and (x1.acm_id_2 is not null) then x1.acm_id_2                            \
+       else (case when x1.da1_rev_code is null then 'REGULER' else x1.ma_da_ac_1 end) end daid_data                                                                                                 \
+      ,x1.data_rev                                                                                                                                                                                  \
+      ,x1.vol_of_usg                                                                                                                                                                                \
+from tdw_summary.cst_usg_dly_smy partition (p_20151004) x1                                                                                                                                          \
+     -------------------------------                                                                                                                                                                \
+     inner join                                                                                                                                                                                     \
+  (  select * from sor.ref_revcode                                                                                                                                                                  \
+     where (lower(svc_usg_tp) = 'data')                                                                                                                                                             \
+   ) x2                                                                                                                                                                                             \
+     on nvl(x1.da1_rev_code,x1.ma_rev_code) = x2.rev_code                                                                                                                                           \
+     -------------------------------                                                                                                                                                                \
+     inner join                                                                                                                                                                                     \
+     gt_usimsubs_decjan_datausr_det x3                                                                                                                                                              \
+     on x1.msisdn = x3.msisdn                                                                                                                                                                       \
+where (x1.src_stm_id in (11200,11201))                                                                                                                                                              \
+               ")
+cursor.close()
+
+print "Current date & time " + time.strftime("%c")
