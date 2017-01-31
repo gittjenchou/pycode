@@ -1,0 +1,49 @@
+
+
+purse = dict()
+purse['age'] = 21
+purse['course'] = 75
+print purse
+#   dictionary does not maintain order
+purse['age'] = 23
+print purse
+#   dictionary is mutable
+
+#   get() method to retrieve value for key: keyvalue from dictinary: dictionary_name, default value: 0
+dictionary_name.get(keyvalue,0)
+
+for loop in dictionary
+
+xxx = {'a':1,'b':2,'c':3}
+for aaa.bbb in xxx.items():
+    print aaa.bbb
+
+xxx = {'a':1,'b':2,'c':3}
+print list(xxx)
+print xxx.keys()
+print xxx.values()
+print xxx.items()
+
+for aaa in xxx:
+    print aaa,xxx[aaa]
+#   this will print aaa from key in dictionary:xxx and also corresponding value of aaa
+
+xxx = {'a':1,'c':3,'b':2}
+#   create list: yyy
+yyy = xxx.items()
+zzz = sorted(xxx.items())
+aaa = yyy.sort()
+for a,b in sorted(xxx.items()):
+    print a,b
+
+#   create list of tuples: yyy 
+yyy = xxx.items()
+#   or
+yyy = list()
+for a,b in xxx.items():
+    yyy.append((a,b))
+#   sort by value
+yyy.sort(reverse = True)
+
+print sorted([(a,b) for a,b in xxx.items()])
+
