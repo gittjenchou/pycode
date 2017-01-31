@@ -1,0 +1,14 @@
+
+
+#operation simple calcuation
+2+2
+2*2
+2+2*2
+2*(2+2)
+#modulus
+7%4
+#floor division
+17//4
+#power
+4**3
+#for square root, use the power with the inverse number
