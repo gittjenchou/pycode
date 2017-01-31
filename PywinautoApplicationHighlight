@@ -1,0 +1,28 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#highlight the top application
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+sublime.top_window_().DrawOutline() #Highlight the window
+
+#if window is not active yet
+# window = app.top_window_()
+# window.SetFocus()
+# window.TypeKeys("{TAB 2}")
+
+#you may also need to click on the window.
+#window.Click()
