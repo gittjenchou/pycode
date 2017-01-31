@@ -181,3 +181,4 @@ for cnt in message1:
         print mo2[0][2]
     except AttributeError:
         print 'Erroneous pattern is :' + cnt
+ 
