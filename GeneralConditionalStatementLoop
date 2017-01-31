@@ -1,0 +1,106 @@
+
+
+#expression
+#== sign is meant for checking equality
+#!= sign is meant for checking inequality
+#other than that, it should be the same as > or < or <= or >=
+42 == int('42')
+42 == float('42')
+
+#if then else expression
+#note that if then else expression must have indent in order for it to work fine
+lnv_var1 = 12
+if lnv_var1 == 2*6 :
+    print("it's 12")
+elif lnv_var1 == 3*6 :
+    print("it's 18")
+else:
+    print("it's not 12")
+
+#while expression
+#note that while expression must have indent in order for it to work fine
+lnv_var1 = 12
+while lnv_var1 != 8 :
+    print("it's not 8, it's still "+str(lnv_var1))
+    lnv_var1 = lnv_var1 - 1
+print("it's 8")
+
+#while expression + breaking operation
+#breaking operation force the operation to move out from certain level (depending on the indenation) and continue to other steps
+lnv_var1 = 12
+lnv_var2 = 0
+while lnv_var1 != 8 :
+    print("it's not 8, it's still "+str(lnv_var1))
+    lnv_var1 = lnv_var1 - 1
+    lnv_var2 = lnv_var2 + 1
+    if lnv_var2 == 3:
+        break
+if lnv_var2 == 3:
+    print("it's too much to perform loop")
+else:
+    print("it's 8")
+
+#while expression + continue operation
+#continue operation force the operation to continue start from the while expression, thus skipping all steps after continue statement
+lnv_var1 = 12
+lnv_var2 = 0
+while lnv_var1 != 8 :
+    lnv_var2 = lnv_var2 + 1
+    if lnv_var2 == 2:
+        continue
+    print("it's not 8, it's still "+str(lnv_var1))
+    lnv_var1 = lnv_var1 - 1
+print("it's 8")
+
+#check the difference
+#this will skip 11th
+#this won't skip others as it bypasses everything to while statement and still deducted with 1
+lnv_var1 = 12
+lnv_var2 = 0
+while lnv_var1 != 8 :
+    lnv_var2 = lnv_var2 + 1
+    lnv_var1 = lnv_var1 - 1
+    if lnv_var1 == 11 :
+        continue
+    print("it's not 8, it's still "+str(lnv_var1))
+print("it's 8")
+
+#this won't be finished (notice that there no sign of >>> in idle since the lnv_var1 will be still 11 and keep continue
+lnv_var1 = 12
+lnv_var2 = 0
+while lnv_var1 != 8 :
+    lnv_var2 = lnv_var2 + 1
+    if lnv_var1 == 11 :
+        continue
+    print("it's not 8, it's still "+str(lnv_var1))
+    lnv_var1 = lnv_var1 - 1
+print("it's 8")
+
+#this will skip everything but 11th
+lnv_var1 = 12
+lnv_var2 = 0
+while lnv_var1 != 8 :
+    lnv_var2 = lnv_var2 + 1
+    if lnv_var1 == 11 :
+        lnv_var1 = lnv_var1 - 1
+        continue
+    print("it's not 8, it's still "+str(lnv_var1))
+    lnv_var1 = lnv_var1 - 1
+print("it's 8")
+
+#for expression 
+#there is quite the same function called xrange in python 2.x which is not available anymore in python 3.x
+#this function is memory saver compared to range but details need to be find out later
+for cntday in range(5):
+    print("count this as number#"+str(cntday))
+#you will notice that python starts from zero
+
+for cntday in range(5,0,-1):
+    print("count this as number#"+str(cntday))
+
+for cntday in range(5,1,-1):
+    print("count this as number#"+str(cntday))
+
+lcv_var1 = 'Alice'
+for cntday in lcv_var1:
+    print(cntday)
