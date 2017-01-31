@@ -1,0 +1,55 @@
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#check process ID and menu (1)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+import pywinauto
+
+#catch application
+sublime = pywinauto.application.Application()
+sublime.Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(3)
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime.connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+print("==" * 20)
+print(sublime_win1.ProcessID())
+
+print("==" * 20)
+for menucnt in sublime_win1.MenuItems():
+    print(menucnt)
+print("==" * 20)
+
+
+#---------------------------------------------------------------------------------------------------------------------------
+#check process ID and menu (2)
+#---------------------------------------------------------------------------------------------------------------------------
+import time
+from pywinauto import Application
+
+#catch application
+sublime = Application().Start(cmd_line=r'C:\Program Files\Sublime Text 2\sublime_text.exe')
+time.sleep(4)
+print("==" * 20)
+print(sublime.windows_())
+
+#catch dialog from window header, it could be from process id
+if sublime.windows_():
+    sublime_win1 =  sublime.window_(title_re=".*Sublime Text.*")
+else:
+    sublime = Application().connect(title_re=".*Sublime Text.*")
+    sublime_win1 = sublime.window_(title_re=".*Sublime Text.*")
+
+print("==" * 20)
+print(sublime_win1.ProcessID())
+
+print("==" * 20)
+for menucnt in sublime_win1.MenuItems():
+    print(menucnt)
+print("==" * 20)
