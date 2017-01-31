@@ -1,0 +1,10 @@
+
+
+cd C:\Python27\Scripts
+help('pywinauto')
+dir('pywinauto')
+
+pydoc.help('pywinauto')
+pydoc.help('pywinauto.application')
+pydoc.help('pywinauto.application.__getattribute__')
+pydoc.help('pywinauto.application.windows_')
