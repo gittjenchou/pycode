@@ -1,0 +1,41 @@
+
+
+import time
+import cx_Oracle
+import csv
+import os
+import glob
+import re
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = cx_Oracle.Cursor(db)
+dictid = {'msisdn':'628557891234'}
+cursor.execute('select /*+parallel(4) no_statement_queuing*/ * from handset_msisdn_d_201606_new where msisdn =: msisdn',dictid)
+row = cursor.fetchone()
+print row
+print row[1]
+
+
+
+import time
+import cx_Oracle
+import csv
+import os
+import glob
+import re
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+db = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+cursor = cx_Oracle.Cursor(db)
+dictid = {'msisdn':'628557891234','gita':'628557891202'}
+for x in dictid:
+    print x,dictid[x]
+    cursor.execute('select /*+parallel(4) no_statement_queuing*/ * from handset_msisdn_d_201606_new where msisdn =: y',y=dictid[x])
+    row = cursor.fetchone()
+    print row
+    print row[1]
