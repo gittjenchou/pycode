@@ -1,0 +1,20 @@
+import sys
+import getpass
+import platform
+import cx_Oracle
+ 
+# -----------------------------------------------------
+# Display versions of python, cx_Oracle module
+# and Oracle client being used...
+# -----------------------------------------------------
+print ("Python version: " + platform.python_version())
+print ("cx_Oracle version: " + cx_Oracle.version)
+print ("Oracle client: " + str(cx_Oracle.clientversion()).replace(', ','.'))
+
+uid="biadm"
+pwd="biadm_2014"
+service="exapub"
+connection = cx_Oracle.connect(uid + "/" + pwd + "@" + service)
+print ("Oracle DB version: " + connection.version)
+print ("Oracle client encoding: " + connection.encoding)
+connection.close()
