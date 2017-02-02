@@ -83,7 +83,7 @@ for i in installed_packages:
     installed_packages_list = sorted(["%s == %s" % (i.key, i.version)])
     print(installed_packages_list)[0]
     # print(i)
-
+ 
 
 help('pywinauto')
 dir('pywinauto')
