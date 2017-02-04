@@ -74,6 +74,9 @@ if modules does not come
 
 # when Anaconda overwrite pip already
 C:\Python27\Scripts\pip install geopandas
+C:\Python27\Scripts\pip.exe install Shapely-1.5.17-cp27-cp27m-win32.whl
+C:\Python27\Scripts\pip.exe install Fiona-1.7.2-cp27-cp27m-win32.whl
+C:\Python27\Scripts\pip.exe install PyQt4-4.11.4-cp27-none-win32.whl
 
 
 #   libxsl
