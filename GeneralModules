@@ -72,6 +72,10 @@ if modules does not come
 #   pip install beautifulsoup4
 
 
+# when Anaconda overwrite pip already
+C:\Python27\Scripts\pip install geopandas
+
+
 #   libxsl
 #   python setup.py install
 
