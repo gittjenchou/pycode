@@ -99,3 +99,5 @@ for i in dir('pywinauto'): print i
 pydoc.help('pywinauto')
 pydoc.help('pywinauto.application')
 
+conda install -c conda-forge fastparquet
+conda install -c conda-forge pyarrow
