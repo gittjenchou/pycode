@@ -2,5 +2,5 @@ conda create -n py27 python=2.7 anaconda
 activate py27 
 deactivate 
 conda create -n py35 python=3.5 anaconda
-conda remove --name py27 -all
+conda remove --name py27 --all
 
