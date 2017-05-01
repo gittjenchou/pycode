@@ -101,3 +101,4 @@ pydoc.help('pywinauto.application')
 
 conda install -c conda-forge fastparquet
 conda install -c conda-forge pyarrow
+anaconda search -t conda xgboost
